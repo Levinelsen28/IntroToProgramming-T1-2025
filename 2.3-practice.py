@@ -15,3 +15,7 @@ num = input("What number do you want to square?\n> ")
 #Parse (convert) the string to an integer
 num = int(num)
 print(num * num)
+
+
+
+
