@@ -34,5 +34,7 @@ adverb_1 = input("adverb 1\n>")
 print("Give me 1 emotion")
 emotion_1 = input("emotion1\n>")
 
+def mad_lib(n, v, adj,):
 
-print("Once upon a time a {noun_1}, in a {adj_1} {noun_2}, had lived in a {adj_2} {noun_3}. Every day, the {noun_4} would {verb_1} {adverb_1}. One day, a {adj_3} {noun_5} appeared and {verb_2} the {noun_6} away. The {noun_7} was {adj_4} and {emotion_1}.")king
+
+print("Once upon a time a " +(n) + ", in a " + (adj) + (n) ", had lived in a " +(adj) +(n). "Every day, the {noun_4} would {verb_1} {adverb_1}. One day, a {adj_3} {noun_5} appeared and {verb_2} the {noun_6} away. The {noun_7} was {adj_4} and {emotion_1}.")
