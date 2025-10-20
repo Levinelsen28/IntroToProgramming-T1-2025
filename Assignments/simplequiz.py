@@ -1,17 +1,17 @@
 tally_score = 0
-q1= input("What is 22+ 45?\n>")
+q1= input("What is 22 + 45?\n>")
 if q1 =="67":
     tally_score = tally_score + 1
-q2= input("What is my name?")
+q2= input("What is my name?\n>")
 if q2 == "Levi Nelsen":
     tally_score = tally_score + 1
-q3= input("How many real fingers do people have?")
+q3= input("How many real fingers do people have?\n>")
 if q3 == "5":
     tally_score = tally_score + 1
-q4= input("What is 5 + 6?")
+q4= input("What is 5 + 6?\n>")
 if q4 == "11":
     tally_score = tally_score + 1
-q5= input("What is my favorite animal?")
+q5= input("What is my favorite animal?\n>")
 if q5 == "Lion":
     tally_score = tally_score + 1
 

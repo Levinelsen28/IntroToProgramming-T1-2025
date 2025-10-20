@@ -21,7 +21,6 @@ add_five_numbers
 def full_name(first, Last):
     print(first + " " + Last)
     
-First = 
 print("first + " " + Last")      
 
 def area_calculator(length,width):
@@ -48,4 +47,4 @@ def echo(a, b):
 
 
 def happy_birthday(name):
-    print("Happy Birthday to you, Happy Birthday to you, Happy birthday dear" + str(name) + " Happy Birhtday to you.)
+    print("Happy Birthday to you, Happy Birthday to you, Happy birthday dear" + str(name) + " Happy Birhtday to you.")
