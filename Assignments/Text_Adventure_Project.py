@@ -1,9 +1,15 @@
+score = 0
+
 def start_game():
+    print("You are a 20 year old, living in the 1850s, and you still live with your parents.")
+    print("But you are lazy and do not want to leave them so you deside to help them around the house.")
+    print("But you decided either live with your parents forever or live a life wothout them.")
     print("welcome to the text adventure game")
     inside()
 
     if __name__ == "__main__":
         start_game()
+
 
 def look_inside():
     hat_present = "Hat"
@@ -12,20 +18,59 @@ def look_inside():
     print("\nYou look around your room. You see:")
     print("1." + hat_present)
     print("2." + backpack_present)
+    print("3. Your computer and phone at your desk")
 
     choice = input(">> ")
-    
     
     if choice == "1":
         print("You found your hat! You probably should put it on.")
         look_inside()
     elif choice == "2":
-        print("You open your backpack. Inside, you find:")
         print(inside_backpack())
-        look_inside
+        look_inside()
+    elif choice == "3":
+        inside()
     else:
         print("Invail choice. Try again.")
         look_inside()
+
+def inside_backpack():
+    print("Inside of your backpack you have: ")
+    print("1. Seeds")
+    print("2. Food")
+    print("3. Water")
+    print("4. Lighter")
+    print("5. Phone")
+    print("6. Sleeping Bag")
+    print("7. Tools")
+    print("8. Go Back")
+
+    choice = (">> ")
+
+    if choice == "1":
+        print("You put the seeds back in bag.")
+        inside_backpack()
+    elif choice == "2":
+        print("You see your food that you need.")
+        inside_backpack()
+    elif choice == "3":
+        print("You see your water.")
+        inside_backpack()
+    elif choice == "4":
+        print("You have your lighter for the campfire")
+        inside_backpack()
+    elif choice == "5":
+        print("You see phone on desk")
+        play_phone()
+    elif choice == "6":
+        print("You see your sleeping bag in your giant backpack")
+    elif choice == "7":
+        print("You see your axe and hoe in your backpack.")
+    elif choice == "8":
+        inside()
+    else:
+        print("Try again.")
+        inside_backpack()
 
 
 
@@ -34,6 +79,7 @@ def inside():
     print("1. Grab you hat and backpack")
     print("2. Sit at your desk")
     print("3. You look around in your room")
+    print("4. Go down stairs")
 
     choice = input(">> ")
 
@@ -42,7 +88,9 @@ def inside():
     elif choice == "2":
         sit_down()
     elif choice == "3":
-        inside_room()
+        look_inside()
+    elif choice == "4":
+        print("You go down stairs and sit on the couch")
     else:
         print("Invalid choice. Try again.")
         inside()
@@ -71,6 +119,8 @@ def Help_Mom():
     print("1. Ingnore her")
     print("2. Do what she asks")
     print("3. Complain to her about not going to get dad")
+
+    global score
 
     choice = input(">> ")
 
@@ -183,7 +233,6 @@ def sit_down():
         sit_down()
 
 
-
 def outside():
     print(" You stand at the front door of your house. Do you:")
     print("1. Look around")
@@ -195,13 +244,13 @@ def outside():
     if choice == "1":
         look_around()
     elif choice == "2":
+        score += 2
         enter_house()
     elif choice == "3":
         move_forward()
     else:
         print("Invalid choice and please try again.")
         outside()
-
 
 
 def look_around():
@@ -250,4 +299,80 @@ def enter_house():
 
 def move_forward():
     print("You venture forward into the land, are you ready for you adventure")
-    print("Do you have ")
+    print("want to look at things before you go: ")
+    print("1. Look inside of backpack")
+    print("2. Make sure computer was off")
+    print("3. See where a pitch fork in the road is on your jouney")
+
+
+    choice = (">>> ")
+
+    if choice == "1":
+        check_backpack()
+    elif choice == "2":
+        print("Look inside of your bedroom")
+    elif choice == "3":
+        print("You pull out your phone and you decide to look up where the pitch in the road is up ahead of you.")
+    else:
+        print("You failed")
+        move_forward()
+
+
+
+def start_adventure():
+    print("After checking for your things. You decide to move forward along the path.")
+    print("You come a across a fork in the road. Do you go left or right")
+    print("1. Right")
+    print("2. Left")
+
+    global score 
+
+    choice = (">>> ")
+
+    if choice == "1":
+        score += 4
+        right_1()
+    elif choice == "2":
+        score += 6
+        left_2()
+    else:
+        print("Try Again")
+        start_adventure()
+
+def right_1():
+    print("You go over a bridge. You come to a another fork in the road and it has three paths. Do you:  ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if __name__ == "__main__":
+        start_game()
