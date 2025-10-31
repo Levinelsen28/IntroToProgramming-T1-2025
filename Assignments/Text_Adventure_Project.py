@@ -7,11 +7,8 @@ def start_game():
     print("welcome to the text adventure game")
     inside()
 
-    if __name__ == "__main__":
-        start_game()
-
-
 def look_inside():
+    global score
     hat_present = "Hat"
     backpack_present = "Backpack"
 
@@ -24,9 +21,10 @@ def look_inside():
     
     if choice == "1":
         print("You found your hat! You probably should put it on.")
-        look_inside()
+        score += 5
+        Grab_Things()
     elif choice == "2":
-        print(inside_backpack())
+        inside_backpack()
         look_inside()
     elif choice == "3":
         inside()
@@ -43,39 +41,17 @@ def inside_backpack():
     print("5. Phone")
     print("6. Sleeping Bag")
     print("7. Tools")
-    print("8. Go Back")
+    
 
     choice = (">> ")
-
-    if choice == "1":
-        print("You put the seeds back in bag.")
-        inside_backpack()
-    elif choice == "2":
-        print("You see your food that you need.")
-        inside_backpack()
-    elif choice == "3":
-        print("You see your water.")
-        inside_backpack()
-    elif choice == "4":
-        print("You have your lighter for the campfire")
-        inside_backpack()
-    elif choice == "5":
-        print("You see phone on desk")
-        play_phone()
-    elif choice == "6":
-        print("You see your sleeping bag in your giant backpack")
-    elif choice == "7":
-        print("You see your axe and hoe in your backpack.")
-    elif choice == "8":
-        inside()
+    if choice in {"6", "7"}:
+        look_inside()
     else:
-        print("Try again.")
+        print(f"You grab an item number {choice}.")
         inside_backpack()
-
-
 
 def inside():
-    print("You are in side your house. Do you:")
+    print("You are inside your house. Do you:")
     print("1. Grab you hat and backpack")
     print("2. Sit at your desk")
     print("3. You look around in your room")
@@ -115,21 +91,27 @@ def Grab_Things():
         Grab_Things()
 
 def Help_Mom():
+    global score
     print("She wants you to go get your father. Do you:")
     print("1. Ingnore her")
     print("2. Do what she asks")
     print("3. Complain to her about not going to get dad")
 
-    global score
+    
 
     choice = input(">> ")
 
     if choice == "1":
+        score -= 1
         print("Son did you hear me?")
+        Help_Mom()
     elif choice == "2":
+        score += 1
         print("Thank you son")
     elif choice == "3":
+        score -= 4
         print("Do now")
+        Help_Mom()
     else:
         print("Try Again.")
         Help_Mom()
@@ -232,7 +214,6 @@ def sit_down():
         print("Invalid choice and please try again.")
         sit_down()
 
-
 def outside():
     print(" You stand at the front door of your house. Do you:")
     print("1. Look around")
@@ -247,11 +228,11 @@ def outside():
         score += 2
         enter_house()
     elif choice == "3":
+        score += 3
         move_forward()
     else:
         print("Invalid choice and please try again.")
         outside()
-
 
 def look_around():
     print("You look around and see:")
@@ -264,16 +245,16 @@ def look_around():
 
     if choose == "1":
         print(" You see trees around you")
-    elif choose == "1":
+    elif choose == "2":
         print("You see long grasses and bushes around your house")
     elif choose == "3":
+        score += 1
         print("You go looking for dad and you see him chopping a tree in the woods")
         print("After seeing dad you go up to him and bug him")
         print("You tell him that mom needs you badly")
         enter_house()
     elif choose == "4":
-        move_forward(__path__)
-
+        move_forward()
 
 def enter_house():
     print("You enter the house from coming outside")
@@ -295,8 +276,6 @@ def enter_house():
         print("Mistake... Cannot go there")
         enter_house()
 
-    
-
 def move_forward():
     print("You venture forward into the land, are you ready for you adventure")
     print("want to look at things before you go: ")
@@ -305,19 +284,18 @@ def move_forward():
     print("3. See where a pitch fork in the road is on your jouney")
 
 
-    choice = (">>> ")
+    choice = input(">>> ")
 
     if choice == "1":
         check_backpack()
     elif choice == "2":
         print("Look inside of your bedroom")
+        inside()
     elif choice == "3":
         print("You pull out your phone and you decide to look up where the pitch in the road is up ahead of you.")
     else:
         print("You failed")
         move_forward()
-
-
 
 def start_adventure():
     print("After checking for your things. You decide to move forward along the path.")
@@ -334,45 +312,101 @@ def start_adventure():
         right_1()
     elif choice == "2":
         score += 6
-        left_2()
+        left_1()
     else:
         print("Try Again")
         start_adventure()
 
+
+
 def right_1():
     print("You go over a bridge. You come to a another fork in the road and it has three paths. Do you:  ")
+    print("1. Right")
+    print("2. Left")
+    print("3. Center")
+
+    choice = (">>>")
+
+    if choice == "1":
+        
+        right_2()
+    elif choice == "2":
+        left_2()
+        game_over()
+    elif choice == "3":
+        center()
+    else:
+        print("You failed. Try again")
+        right_1()
+    
+def left_1():
+    print("You go into a town")
+    score += 5
+    print(f"Your score in total {score}")
+    game_over
+
+def right_2():
+    print("You go into another town far far away. From your parnet it has been 31 day since you have left")
+    score += 10
+    print(f"Your score in total {score}")
+    game_over
+
+def left_2():
+    score += 15
+    print(f"Your score in total {score}")
+    ending_4()
+
+def center():
+    print("You you move forward into a fork in the road")
+    print("1. Right")
+    print("2. Left")
+
+    choice = (">>> ")
+
+def check_final_score_range():
+    global score
+    target = 40
+    tolerance = -4
+    
+    # Calculate the minimum and maximum acceptable scores
+    min_score = target - tolerance # 8
+    max_score = target + tolerance # 12
+    
+    print(f"\nChecking if score is within the acceptable range: {target} \u00B1 {tolerance}")
+    print(f"Your current score is: {score}")
+
+    # The if statement checks if the score is greater than or equal to the minimum
+    # AND less than or equal to the maximum.
+    if score >= min_score and score <= max_score:
+        print("Success! Your score is within the golden range.")
+        print(f" (Between {min_score} and {max_score})")
+    else:
+        print("Failure. Your score is outside the required range.")
+
+
+def game_over():
+    global score
+    print("\n" + "="*4)
+    print(f"GAME OVER! Your final score is: {score}")
+    
+    check_final_score_range
+
+    if score <= 5:
+        print("When you see your dad and help your mother out. You choose to stay with them until there death and live there until you die as well.")
+    elif score == 10:
+        print("If you go left you move to a city near by your family and live there and find someone and marry them and have kid to pass on your genes.")
+    elif score == 20:
+        print("if you choose to do right you move over a bridge and go right again. You go to a far town away and you never see your parnets but fall in love with someone else you meet in that town or city.")
+    elif score == 30:
+        print("if you went right and the hit another pitch fork in the road. You go strait on the road you live by your self on a country road.")
+    elif score == 40:
+        print("if you went right and the hit another pitch fork in the road and go strait on the road you live by your self on a country road.")
+    else:
+        print("(Secret Ending) If you went lef into a towm and keep on going you wnet into a forest. In the forest you get mauled by a bear and when word gets to your parents you have die. They die because of your passing")
+    print("Thanks for playing!")
+    print("="*4)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if __name__ == "__main__":
-        start_game()
+if __name__ == "__main__":
+    start_game()
