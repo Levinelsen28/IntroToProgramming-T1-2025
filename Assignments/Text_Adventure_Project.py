@@ -21,7 +21,7 @@ def look_inside():
     
     if choice == "1":
         print("You found your hat! You probably should put it on.")
-        score += 5
+        score += 1
         Grab_Things()
     elif choice == "2":
         inside_backpack()
@@ -106,10 +106,10 @@ def Help_Mom():
         print("Son did you hear me?")
         Help_Mom()
     elif choice == "2":
-        score += 1
+        score += 2
         print("Thank you son")
     elif choice == "3":
-        score -= 4
+        score -= 1
         print("Do now")
         Help_Mom()
     else:
@@ -225,16 +225,17 @@ def outside():
     if choice == "1":
         look_around()
     elif choice == "2":
-        score += 2
+        score += 1
         enter_house()
     elif choice == "3":
-        score += 3
+        score += 1
         move_forward()
     else:
         print("Invalid choice and please try again.")
         outside()
 
 def look_around():
+    score += 2
     print("You look around and see:")
     print("1. Trees")
     print("2. Long Grass and bushes")
@@ -248,7 +249,7 @@ def look_around():
     elif choose == "2":
         print("You see long grasses and bushes around your house")
     elif choose == "3":
-        score += 1
+        score += 2
         print("You go looking for dad and you see him chopping a tree in the woods")
         print("After seeing dad you go up to him and bug him")
         print("You tell him that mom needs you badly")
@@ -271,6 +272,7 @@ def enter_house():
     elif choose == "2":
         sit_down()
     elif choose == "3":
+        score += 4
         outside()
     else:
         print("Mistake... Cannot go there")
@@ -308,16 +310,14 @@ def start_adventure():
     choice = (">>> ")
 
     if choice == "1":
-        score += 4
+        score += 1
         right_1()
     elif choice == "2":
-        score += 6
+        score += 1
         left_1()
     else:
         print("Try Again")
         start_adventure()
-
-
 
 def right_1():
     print("You go over a bridge. You come to a another fork in the road and it has three paths. Do you:  ")
@@ -328,12 +328,14 @@ def right_1():
     choice = (">>>")
 
     if choice == "1":
-        
+        score += 1
         right_2()
     elif choice == "2":
+        score += 1
         left_2()
         game_over()
     elif choice == "3":
+        score += 1
         center()
     else:
         print("You failed. Try again")
@@ -341,20 +343,20 @@ def right_1():
     
 def left_1():
     print("You go into a town")
-    score += 5
+    score += 1
     print(f"Your score in total {score}")
-    game_over
+    game_over()
 
 def right_2():
     print("You go into another town far far away. From your parnet it has been 31 day since you have left")
-    score += 10
+    score += 1
     print(f"Your score in total {score}")
-    game_over
+    game_over()
 
 def left_2():
-    score += 15
+    score += 1
     print(f"Your score in total {score}")
-    ending_4()
+    game_over()
 
 def center():
     print("You you move forward into a fork in the road")
@@ -363,10 +365,43 @@ def center():
 
     choice = (">>> ")
 
+    if chioce == "1":
+        score += 1
+        right_3()
+    elif choice == "2":
+        score += 1
+        left_3()
+    else:
+        print("You Failed.")
+        
+def Right_3():
+    score += 1
+    print(f"Your score in total {score}")
+    game_over()
+
+def check_backpack():
+    num = num
+    Seeds = input("How many different seeds do you have?\n> ")
+    Food = input("How much food do you have?\n> ")
+    Water = input("How many jugs of water do you have?\n> ")
+    Phone = input("What is your phone battery percent?\n> ")
+    print("Check Supplies")
+    print("Seeds: " + Seeds)
+    print("Food: " + Food)
+    print("Water Jugs: " + Water)
+    print("Battery Percent: " + Phone)
+
+    if int(Seeds) >= 5 and int(Food) >= 5 and int(Water) >= 3 and int(Phone) >= 50:
+        print("You have enough supplies to continue your adventure.")
+        start_adventure()
+    else:
+        print("You do not have enough supplies to continue your adventure. You head back home to get more supplies.")
+        start_adventure()
+
 def check_final_score_range():
     global score
-    target = 40
-    tolerance = -4
+    target = 15
+    tolerance = 2
     
     # Calculate the minimum and maximum acceptable scores
     min_score = target - tolerance # 8
@@ -383,7 +418,6 @@ def check_final_score_range():
     else:
         print("Failure. Your score is outside the required range.")
 
-
 def game_over():
     global score
     print("\n" + "="*4)
@@ -391,22 +425,23 @@ def game_over():
     
     check_final_score_range
 
-    if score <= 5:
+    if score <= 2:
         print("When you see your dad and help your mother out. You choose to stay with them until there death and live there until you die as well.")
-    elif score == 10:
+    elif score == 3:
         print("If you go left you move to a city near by your family and live there and find someone and marry them and have kid to pass on your genes.")
-    elif score == 20:
+    elif score == 4:
         print("if you choose to do right you move over a bridge and go right again. You go to a far town away and you never see your parnets but fall in love with someone else you meet in that town or city.")
-    elif score == 30:
+    elif score == 5:
         print("if you went right and the hit another pitch fork in the road. You go strait on the road you live by your self on a country road.")
-    elif score == 40:
+    elif score == 6:
         print("if you went right and the hit another pitch fork in the road and go strait on the road you live by your self on a country road.")
-    else:
+    elif score >= 10:
         print("(Secret Ending) If you went lef into a towm and keep on going you wnet into a forest. In the forest you get mauled by a bear and when word gets to your parents you have die. They die because of your passing")
+    else:
+        print("You have a unique ending that is not listed.")
+    
     print("Thanks for playing!")
     print("="*4)
-
-
 
 if __name__ == "__main__":
     start_game()
