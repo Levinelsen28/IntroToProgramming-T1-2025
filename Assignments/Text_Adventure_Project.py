@@ -365,14 +365,19 @@ def center():
 
     choice = (">>> ")
 
-    if chioce == "1":
+    if choice == "1":
         score += 1
-        right_3()
+        Right_3()
     elif choice == "2":
         score += 1
         left_3()
     else:
         print("You Failed.")
+    
+def left_3():
+    score += 1
+    print(f"Your score in total {score}")
+    game_over()
         
 def Right_3():
     score += 1
@@ -403,15 +408,13 @@ def check_final_score_range():
     target = 15
     tolerance = 2
     
-    # Calculate the minimum and maximum acceptable scores
-    min_score = target - tolerance # 8
-    max_score = target + tolerance # 12
+    
+    min_score = target - tolerance 
+    max_score = target + tolerance 
     
     print(f"\nChecking if score is within the acceptable range: {target} \u00B1 {tolerance}")
     print(f"Your current score is: {score}")
 
-    # The if statement checks if the score is greater than or equal to the minimum
-    # AND less than or equal to the maximum.
     if score >= min_score and score <= max_score:
         print("Success! Your score is within the golden range.")
         print(f" (Between {min_score} and {max_score})")
