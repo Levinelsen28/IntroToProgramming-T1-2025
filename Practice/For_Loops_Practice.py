@@ -27,16 +27,21 @@ for i in range(len(numbers)):
     print(f"{numbers[i]} squared is {squared}")
 
 print()
+#Ask the user to enter a string. 
+#Use a for loop to count
+#Print the number of vowels (a, e, i, o, u) in the string.
 
+user_string = input("Enter a string: \n>")
+vowel_count = 0
+vowels = "aeiouAEIOU"
+for i in range(len(user_string)):
+    if user_string[i] in vowels:
+        vowel_count += 1
 
-vowels = ['a', 'e', 'i', 'o', 'u']
-for i in range(len(vowels)):
-    print(str(i) + ": " + vowels[i])
+print(user_string + " has " + str(vowel_count) + " vowels.")
 
-print()
-
-num = int(input("Enter a number to show its multiplication table: "))
-limit = input("Enter the table limit (default 10): ")
+num = int(input("Enter a number to show its multiplication table: \n>"))
+limit = input("Enter the table limit (default 10): \n>")
 try:
     limit = int(limit) if limit.strip() else 10
 except ValueError:
